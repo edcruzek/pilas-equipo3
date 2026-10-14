@@ -3,6 +3,12 @@
 Proyecto didáctico del tema 2.2 de Estructuras de datos. Un panel gráfico permite
 acceder al **Laboratorio de pilas** y la **Calculadora con pilas**.
 
+## Demostración en línea
+
+[**Abrir el laboratorio y la calculadora**](https://pilas-equipo-tres.grittyplume257.chatgpt.site).
+No necesita instalar .NET: esta demostración utiliza JavaScript en el navegador.
+Los proyectos C# originales y las instrucciones de uso local siguen debajo.
+
 ## Ejecutar la aplicación gráfica
 
 Se necesita **SDK .NET 10** y un navegador. No hay paquetes NuGet externos,
