@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pilas · Equipo 3</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script></head>
+<body>
+<header><a class="brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">≡</span> PILAS <small>2.2 / EQUIPO 3</small></a><nav aria-label="Módulos"><a href="#inicio">Inicio</a><a href="#laboratorio">Laboratorio</a><a href="#calculadora">Calculadora</a></nav></header>
+<main>
+<section id="inicio" class="view">
+ <div class="hero"><p class="eyebrow">ESTRUCTURAS DE DATOS · UNIVERSIDAD TECNOLÓGICA METROPOLITANA</p><h1>Entiende una pila.<br><em>Observa cada movimiento.</em></h1><p class="intro">El último dato en entrar es el primero en salir. Explora sus operaciones y descubre cómo resuelve una expresión.</p></div>
+ <div class="modules"><a class="module" href="#laboratorio"><span class="number">01</span><h2>Laboratorio de pilas</h2><p>Inserta, retira y consulta datos. Compara un arreglo fijo con nodos enlazados y observa el tope.</p><span class="module-link">Abrir laboratorio <span aria-hidden="true">↗</span></span></a><a class="module" href="#calculadora"><span class="number">02</span><h2>Calculadora con pilas</h2><p>Escribe una expresión. Sigue su conversión a postfija y la evaluación, paso a paso.</p><span class="module-link">Abrir calculadora <span aria-hidden="true">↗</span></span></a></div>
+ <div class="home-note"><strong>LIFO</strong><span>Last In, First Out<br>Último en entrar, primero en salir</span><span>Dos demostraciones · Una misma regla</span></div>
+</section>
+<section id="laboratorio" class="view" hidden>
+ <div class="section-heading"><div><p class="eyebrow">01 / EXPERIMENTA CON LOS DATOS</p><h1>Laboratorio de pilas</h1></div><button id="lab-demo" class="secondary">Cargar ejemplo 10, 20, 30</button></div>
+ <div class="lab-layout"><aside class="controls"><label for="tipo">Representación</label><select id="tipo"><option value="arreglo">Arreglo fijo · 5 posiciones</option><option value="enlazada">Nodos enlazados</option></select><p class="hint" id="type-hint">El arreglo tiene cinco posiciones. Push falla cuando todas están ocupadas.</p>
+ <form id="push-form"><label for="dato">Dato para insertar</label><input id="dato" maxlength="80" placeholder="Ejemplo: 40" autocomplete="off"><button type="submit">Insertar · Push</button></form>
+ <div class="operation-buttons"><button id="pop" class="secondary">Retirar · Pop</button><button id="peek" class="secondary">Consultar · Peek</button><button id="clear" class="secondary">Vaciar · Clear</button></div><button id="lab-reset" class="text-button">Reiniciar demostración</button>
+ <div class="rule"><strong>Regla LIFO</strong><p>Push y Pop trabajan en el mismo extremo: el tope. Peek mira ese dato sin retirarlo.</p></div></aside>
+ <div class="experiment"><div class="stats"><div><span>ELEMENTOS</span><strong id="count">0</strong></div><div><span>CAPACIDAD</span><strong id="capacity">5</strong></div><div><span>ESTADO</span><strong id="state">Vacía</strong></div></div>
+ <div class="stack-area"><div><h2 id="stack-title">Arreglo fijo</h2><p class="hint">Los valores se leen del tope hacia la base.</p></div><div id="lab-stack" class="stack-diagram" aria-label="Representación de la pila"></div></div>
+ <p id="lab-message" class="message" role="status" aria-live="polite">Inserta tu primer dato o carga el ejemplo.</p>
+ <div class="history-heading"><h2>Historial de operaciones</h2><span>Más reciente primero</span></div><ol id="history" class="history"><li>Las operaciones aparecerán aquí.</li></ol></div></div>
+</section>
+<section id="calculadora" class="view" hidden>
+ <div class="section-heading"><div><p class="eyebrow">02 / SIGUE EL ALGORITMO</p><h1>Calculadora con pilas</h1></div><button id="calc-reset" class="secondary">Reiniciar</button></div>
+ <form id="calc-form" class="expression-form"><div><label for="expresion">Expresión infija</label><input id="expresion" maxlength="512" value="(6+2)*5-8/4" autocomplete="off" spellcheck="false" aria-describedby="expression-help"></div><button type="submit">Resolver expresión</button></form>
+ <div class="example-row"><span>Prueba un ejemplo:</span><button data-example="(6+2)*5-8/4">Paréntesis</button><button data-example="2+3*4">Precedencia</button><button data-example="10-3-2">Orden de resta</button><button data-example="12.5/2.5+1">Decimales</button></div>
+ <p class="hint" id="expression-help">Números no negativos, punto decimal, + − * / y paréntesis. No admite signos unarios, potencias ni variables.</p>
+ <p id="calc-message" class="message" role="status" aria-live="polite">Resuelve una expresión para explorar sus pasos.</p>
+ <div id="calc-results" hidden><div class="results-summary"><div><span>POSTFIJA</span><strong id="postfix"></strong></div><div><span>RESULTADO</span><strong id="result"></strong></div></div>
+ <div class="phase-switch" role="group" aria-label="Fase del algoritmo"><button id="phase-conversion" aria-pressed="true">1. Conversión a postfija</button><button id="phase-evaluation" aria-pressed="false">2. Evaluación</button></div>
+ <div class="step-controls"><button id="previous" class="secondary">← Anterior</button><span id="step-count">Estado inicial</span><button id="next">Siguiente →</button><button id="autoplay" class="secondary">Reproducir</button><button id="steps-start" class="text-button">Volver al inicio</button></div>
+ <div class="trace-layout"><div class="trace-copy"><span class="eyebrow" id="phase-label">CONVERSIÓN</span><h2>Token <span id="token" class="token">—</span></h2><p id="action" class="action">La pila comienza vacía.</p><p class="rule-description" id="phase-help"></p><div id="output-area"><span class="eyebrow">SALIDA POSTFIJA ACUMULADA</span><p id="output" class="output">Vacía</p></div></div><div class="trace-stack-panel"><h2 id="trace-stack-title">Pila de operadores</h2><p class="hint">Tope arriba · Estado después del paso</p><div id="trace-stack" class="stack-diagram" aria-label="Pila del algoritmo"></div></div></div>
+ <details><summary>Ver la traza completa</summary><div class="table-scroll"><table><thead><tr><th>Paso</th><th>Token</th><th>Acción</th><th>Pila: tope → base</th><th>Salida</th></tr></thead><tbody id="trace-table"></tbody></table></div></details></div>
+</section>
+</main><footer><span>Equipo 3 · 4° C DSM · Estructuras de datos</span><span>Aplicación local · C# + ASP.NET Core</span></footer>
+</body></html>

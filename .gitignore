@@ -1,0 +1,18 @@
+# Compilación y configuración local
+**/bin/
+**/obj/
+.vs/
+.vscode/
+*.user
+*.suo
+__pycache__/
+*.pyc
+.env
+.env.*
+
+# Documentos y paquetes de la entrega (no pertenecen al repositorio)
+*.pdf
+*.ppt
+*.pptx
+*.zip
+*.rar
